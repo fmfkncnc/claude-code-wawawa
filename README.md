@@ -2,7 +2,7 @@
 
 ## 功能
 
-- 完整的 Ink TUI 交互界面（与官方 Claude Code 一致）
+- 完整的 Ink TUI 交互界面
 - `--print` 无头模式（脚本/CI 场景）
 - 支持 MCP 服务器、插件、Skills
 - 支持自定义 API 端点和模型
@@ -98,7 +98,7 @@ API_TIMEOUT_MS=3000000
 
 # 禁用遥测和非必要网络请求
 DISABLE_TELEMETRY=1
-CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+opencc_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 ```
 
 ### 4. 启动
@@ -107,23 +107,23 @@ CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 
 ```bash
 # 交互 TUI 模式（完整界面）
-./bin/claude-haha
+./bin/opencc-haha
 
 # 无头模式（单次问答）
-./bin/claude-haha -p "your prompt here"
+./bin/opencc-haha -p "your prompt here"
 
 # 管道输入
-echo "explain this code" | ./bin/claude-haha -p
+echo "explain this code" | ./bin/opencc-haha -p
 
 # 查看所有选项
-./bin/claude-haha --help
+./bin/opencc-haha --help
 ```
 
 #### Windows
 
 > **前置要求**：必须安装 [Git for Windows](https://git-scm.com/download/win)（提供 Git Bash，项目内部 Shell 执行依赖它）。
 
-Windows 下启动脚本 `bin/claude-haha` 是 bash 脚本，无法在 cmd / PowerShell 中直接运行。请使用以下方式：
+Windows 下启动脚本 `bin/opencc-haha` 是 bash 脚本，无法在 cmd / PowerShell 中直接运行。请使用以下方式：
 
 **方式一：PowerShell / cmd 直接调用 Bun（推荐）**
 
@@ -142,7 +142,7 @@ bun --env-file=.env ./src/localRecoveryCli.ts
 
 ```bash
 # 在 Git Bash 终端中，与 macOS/Linux 用法一致
-./bin/claude-haha
+./bin/opencc-haha
 ```
 
 > **注意**：部分功能（语音输入、Computer Use、Sandbox 隔离等）在 Windows 上不可用，不影响核心 TUI 交互。
@@ -162,7 +162,7 @@ bun --env-file=.env ./src/localRecoveryCli.ts
 | `ANTHROPIC_DEFAULT_OPUS_MODEL` | 否 | Opus 级别模型映射 |
 | `API_TIMEOUT_MS` | 否 | API 请求超时，默认 600000 (10min) |
 | `DISABLE_TELEMETRY` | 否 | 设为 `1` 禁用遥测 |
-| `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | 否 | 设为 `1` 禁用非必要网络请求 |
+| `opencc_CODE_DISABLE_NONESSENTIAL_TRAFFIC` | 否 | 设为 `1` 禁用非必要网络请求 |
 
 ---
 
@@ -171,7 +171,7 @@ bun --env-file=.env ./src/localRecoveryCli.ts
 如果完整 TUI 出现问题，可以使用简化版 readline 交互模式：
 
 ```bash
-CLAUDE_CODE_FORCE_RECOVERY_CLI=1 ./bin/claude-haha
+opencc_CODE_FORCE_RECOVERY_CLI=1 ./bin/opencc-haha
 ```
 
 ---
@@ -194,7 +194,7 @@ CLAUDE_CODE_FORCE_RECOVERY_CLI=1 ./bin/claude-haha
 ## 项目结构
 
 ```
-bin/claude-haha          # 入口脚本
+bin/opencc-haha          # 入口脚本
 preload.ts               # Bun preload（设置 MACRO 全局变量）
 .env.example             # 环境变量模板
 src/
@@ -230,4 +230,4 @@ src/
 
 ## Disclaimer
 
-本仓库基于 2026-03-31 从 Anthropic npm registry 泄露的 Claude Code 源码。所有原始源码版权归 [Anthropic](https://www.anthropic.com) 所有。仅供学习和研究用途。
+本仓库基于 2026-03-31 从 Anthropic npm registry 泄露的 opencc Code 源码。所有原始源码版权归 [Anthropic](https://www.anthropic.com) 所有。仅供学习和研究用途。
